@@ -40,41 +40,37 @@ class _screen1State extends State<screen1> {
           Text('Madireddy',style: TextStyle(color: Colors.grey),),
           SizedBox(height: 0,),
 
-          ListView.builder(
+          // Profile Options List
+          ListView.separated(
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: profileOptions.length,
+            separatorBuilder: (context, index) => const Divider(thickness: 1),
             itemBuilder: (context, index) {
               final option = profileOptions[index];
-              return Column(
-                children: [
-                  Divider(color: Colors.grey, thickness: 1),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-                    child: Row(
-                      children: [
-                        Icon(option.icon, size: 50, color: option.color),
-                        SizedBox(width: 30),
-                        Expanded(
-                          child: Text(option.title, style: TextStyle(fontSize: 16, color: option.color),),
-                        ),
-                        Icon(Icons.chevron_right, size: 50, color: option.color),
-                      ],
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Row(
+                  children: [
+                    Icon(option.icon, size: 30, color: option.color),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Text(
+                        option.title,
+                        style: TextStyle(fontSize: 16, color: option.color),
+                      ),
                     ),
-                  ),
-                ],
+                    Icon(Icons.chevron_right, color: option.color),
+                  ],
+                ),
               );
             },
           ),
-      SizedBox(height: 50,),
-      // Bottom Navigation Bar with floating icon
 
-
-
-
-
+          const SizedBox(height: 40),
         ],
-
       ),
+
 
 
       bottomNavigationBar: nav.CustomBottomNavBar(
