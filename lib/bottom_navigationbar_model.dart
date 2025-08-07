@@ -17,16 +17,21 @@ class CustomBottomNavBar extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
+          // Main BottomNavigationBar
           BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             backgroundColor: Colors.white,
+            currentIndex: selectedIndex,
+            selectedItemColor: Colors.blue,
+            unselectedItemColor: Colors.grey,
+            onTap: onItemTapped,
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: SizedBox(height: 26), // Placeholder
+                icon: SizedBox(height: 26), // Placeholder for center button
                 label: 'Biometric',
               ),
               BottomNavigationBarItem(
@@ -34,12 +39,9 @@ class CustomBottomNavBar extends StatelessWidget {
                 label: 'Profile',
               ),
             ],
-            currentIndex: selectedIndex,
-            selectedItemColor: Colors.blue,
-            unselectedItemColor: Colors.grey,
-            onTap: onItemTapped,
           ),
-          // Floating fingerprint icon
+
+          // Floating Fingerprint Button
           Positioned(
             top: -20,
             left: MediaQuery.of(context).size.width / 2 - 28,
